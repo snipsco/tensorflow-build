@@ -1,0 +1,4 @@
+Name: tensorflow_c
+Description: Tensorflow c lib
+Version: 1.0.0-rc2
+Libs: -L/usr/lib -ltensorflow_c
