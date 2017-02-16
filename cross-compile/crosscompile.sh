@@ -2,7 +2,7 @@
 
 PATCH_ORIG=tf-crosscompile.patch
 BUILD_DIR=target
-TENSORFLOW_VERSION="v1.0.0-rc2"
+TENSORFLOW_VERSION="v1.0.0"
 
 CT_DIR=$1
 CT_NAME=$2
