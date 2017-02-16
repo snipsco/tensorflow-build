@@ -1,5 +1,5 @@
 Package: libtensorflow-c
-Version: 1.0.0-rc2-snips-1
+Version: 1.0.0-snips-2
 Section: base
 Priority: optional
 Architecture: armhf
