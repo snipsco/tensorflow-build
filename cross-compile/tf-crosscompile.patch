@@ -176,7 +176,7 @@ new file mode 100644
 index 000000000..3ff006da8
 --- /dev/null
 +++ b/tools/arm_compiler/CROSSTOOL
-@@ -0,0 +1,861 @@
+@@ -0,0 +1,862 @@
 +major_version: "local"
 +minor_version: ""
 +default_target_cpu: "same_as_host"
@@ -251,6 +251,7 @@ index 000000000..3ff006da8
 +
 +  cxx_builtin_include_directory: "%%CT_ROOT_DIR%%/%%CT_NAME%%/include/c++/%%CT_GCC_VERSION%%/"
 +  cxx_builtin_include_directory: "%%CT_ROOT_DIR%%/%%CT_NAME%%/sysroot/usr/include/"
++  cxx_builtin_include_directory: "%%CT_ROOT_DIR%%/%%CT_NAME%%/libc/usr/include/"
 +  cxx_builtin_include_directory: "%%CT_ROOT_DIR%%/lib/gcc/%%CT_NAME%%/%%CT_GCC_VERSION%%/include"
 +  cxx_builtin_include_directory: "%%CT_ROOT_DIR%%/lib/gcc/%%CT_NAME%%/%%CT_GCC_VERSION%%/include-fixed"
 +  
