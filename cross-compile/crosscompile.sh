@@ -2,15 +2,16 @@
 
 PATCH_ORIG=tf-crosscompile.patch
 BUILD_DIR=target
-TENSORFLOW_VERSION="v1.0.0"
 
 CT_DIR=$1
 CT_NAME=$2
+TENSORFLOW_VERSION=$3
 
 GCC=$1/bin/$2-gcc
 GCC_VERSION=$($GCC -dumpversion)
-if [ ! -f $GCC ];then
-	echo "usage: $0 <absolute cross toolchain path> <toolchain prefix>"
+if [ ! -f $GCC ] || [ -z $TENSORFLOW_VERSION ]
+then
+	echo "usage: $0 <absolute cross toolchain path> <toolchain prefix> <tensorflow tag/commit>"
 	echo "seaching gcc here : $GCC"
 	exit
 fi 
