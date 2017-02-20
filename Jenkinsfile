@@ -4,11 +4,11 @@ node('jenkins-slave-tensorflow') {
 	}
 
 	stage('build') {
-		sh "./createDebNative.sh"
+		sh './createDebNative.sh'
 	}	
 
 	stage('upload') {
-		aws s3 cp target s3://snips/tensorflow-deb/ --recursive  --exclude * --include "*.deb"
+		sh 'aws s3 cp target/ s3://snips/tensorflow-deb/ --recursive  --exclude "*" --include "*.deb"'
 	}
 
 }
