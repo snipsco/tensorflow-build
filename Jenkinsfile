@@ -8,7 +8,7 @@ def mapToList(depmap) {
 }
 
 def cmds = [
-	'x86_64':'./create-deb-native.sh',
+	'amd64':'./create-deb-native.sh',
 	'armhf':'./create-deb-armhf.sh'
 ]
 def builders = [:]
