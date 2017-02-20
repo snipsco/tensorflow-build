@@ -1,8 +1,0 @@
-Package: libtensorflow-c
-Version: 1.0.0-snips-2
-Section: base
-Priority: optional
-Architecture: armhf
-Maintainer: Thibaut Lorrain <thibaut.lorrain@snips.ai>
-Description: Tensorflow c lib
-Homepage: https://www.tensorflow.org 
