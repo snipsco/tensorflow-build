@@ -3,7 +3,7 @@
 TARGET=target
 TOOLS_DIR=tools
 #TOOLCHAIN_ROOT="arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/"
-TOOLCHAIN_ROOT="arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/"
+TOOLCHAIN_ROOT="arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64"
 TOOLCHAIN_NAME=arm-linux-gnueabihf
 
 VERSION=$1
@@ -16,7 +16,7 @@ fi
 
 mkdir $TARGET
 
-CURRENT_DIR=$(`pwd`)
+CURRENT_DIR=$(pwd)
 
 git clone https://github.com/raspberrypi/tools "$TARGET/$TOOLS_DIR"
 
