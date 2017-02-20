@@ -2,7 +2,7 @@
 
 TARGET_SO_FILE=target/tensorflow/bazel-bin/tensorflow/libtensorflow_c.so
 
-. versions.sh
+. ./versions.sh
 
 ./compile-arm.sh "$TF_VERSION"
 ./create-deb.sh "$TARGET_SO_FILE" armhf "$TF_DEB_VERSION"
