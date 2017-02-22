@@ -2,8 +2,8 @@
 
 TARGET=target
 TOOLS_DIR=tools
-#TOOLCHAIN_ROOT="arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/"
-TOOLCHAIN_ROOT="arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64"
+TOOLCHAIN_ROOT="arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf"
+#TOOLCHAIN_ROOT="arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64"
 TOOLCHAIN_NAME=arm-linux-gnueabihf
 
 VERSION=$1
