@@ -13,29 +13,31 @@ def cmds = [
 ]
 def builders = [:]
 node {
-	for ( def c in mapToList(cmds) ) {
-		def label = "${c.key}"
-		def cmd = "${c.value}"
-
-		builders[label] = {
-
-			node('jenkins-slave-tensorflow') {
-				stage("checkout-${label}") {
-					checkout scm 
+	if(env.BRANCH_NAME == "master") {
+		for ( def c in mapToList(cmds) ) {
+			def label = "${c.key}"
+			def cmd = "${c.value}"
+        
+			builders[label] = {
+        
+				node('jenkins-slave-tensorflow') {
+					stage("checkout-${label}") {
+						checkout scm 
+					}
+        
+					stage("build-${label}") {
+						sh "${cmd}"
+					}	
+        
+					stage("upload-${label}") {
+						sh 'aws s3 cp target/ s3://snips/tensorflow-deb/ --recursive  --exclude "*" --include "*.deb"'
+					}
+        
 				}
-
-				stage("build-${label}") {
-					sh "${cmd}"
-				}	
-
-				stage("upload-${label}") {
-					sh 'aws s3 cp target/ s3://snips/tensorflow-deb/ --recursive  --exclude "*" --include "*.deb"'
-				}
-
+        
 			}
-
 		}
+        
+		parallel builders
 	}
-
-	parallel builders
 }
