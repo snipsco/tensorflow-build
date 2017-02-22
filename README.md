@@ -31,26 +31,26 @@ Here is a small description of interesing scripts in this repo
 
 Script | Description
 --- | ---
-compile-arm.sh | clones the `raspberry/tools` repository an launches a cross compilation using the toolchain in it. Takes the tensorflow version as a parameter
-compile.sh | clones and build build tensorflow for current machine. Takes the tensorflow version as a parameter
-create-deb-armhf.sh | builds tensorflow for `armhf` and pakages it in a `deb` file. You need to be on a debian based system, deb is output in `target` dir
-create-deb-native.sh | builds tensorflow for `amd64` and pakages it in a `deb` file. You need to be on a debian based system, deb is output in `target` dir
-create-deb.sh | Generic script for creating a deb. Launch it without args for usage
-create-pkgconfig.sh | Generic script for creating a pc. Launch it without args for usage
-cross-compile.sh | Generic script for cloning and building tensorflow using a cross toolchain. Launch it without args for usage
+`compile-arm.sh` | clones the `raspberry/tools` repository an launches a cross compilation using the toolchain in it. Takes the tensorflow version as a parameter
+`compile.sh` | clones and build build tensorflow for current machine. Takes the tensorflow version as a parameter
+`create-deb-armhf.sh` | builds tensorflow for `armhf` and pakages it in a `deb` file. You need to be on a debian based system, deb is output in `target` dir
+`create-deb-native.sh` | builds tensorflow for `amd64` and pakages it in a `deb` file. You need to be on a debian based system, deb is output in `target` dir
+`create-deb.sh` | Generic script for creating a deb. Launch it without args for usage
+`create-pkgconfig.sh` | Generic script for creating a pc. Launch it without args for usage
+`cross-compile.sh` | Generic script for cloning and building tensorflow using a cross toolchain. Launch it without args for usage
 
 ### Building a deb
 
-Just launch `create-deb-armhf.sh` or `create-deb-native.sh` and go for a cup of coffee, the .deb will be created in the `target` repository 
+Just launch `create-deb-armhf.sh` or `create-deb-native.sh` and go for a cup of coffee, the `.deb` will be created in the `target` repository 
 
 ### Building for archlinux
 
-A `PKGBUILD` is provided in the `archlinux` folder running `makepkg` in in ths folder should be all that you need
+A `PKGBUILD` is provided in the `archlinux` folder running `makepkg` in in this folder should be all that you need
 
 
 ## Bonus : Using with Rust
 
-You can use tensorflow with your rust projects using the `tensorflow` crate, its dependency, `tensorflow-sys` will seek the `libtensorflow\_c.so` using pkgconfig and build it if it doesn't find it
+You can use tensorflow with your rust projects using the `tensorflow` crate, its dependency, `tensorflow-sys` will seek the `libtensorflow_c.so` using pkgconfig and build it if it doesn't find it
 
 ### Native build
 
