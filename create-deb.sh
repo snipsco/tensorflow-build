@@ -31,7 +31,8 @@ if [ -z $SO_VERSION ]
 then
 	echo "version not found"
 fi
-if [ -z $SO_FILE ] || [ ! -f $SO_FILE ] || [ -z $SO_ARCH ] || [ -z $SO_VERSION ];then
+if [ -z $SO_FILE ] || [ ! -f $SO_FILE ] || [ -z $SO_ARCH ] || [ -z $SO_VERSION ]
+then
 	echo "usage: $0 <path/to/libtensorflow_c.so> <arch> <version>"
 	exit 1
 fi
@@ -57,11 +58,7 @@ Description: $LIB_DESC
 Homepage: https://www.tensorflow.org 
 EOF
 
-cat << EOF > $DEB_NAME/$PC_INSTALL_DIR/$PC_INSTALL_NAME
-Name: $LIB_NAME
-Description: $LIB_DESC
-Version: $SO_VERSION
-Libs: -L$SO_INSTALL_DIR -l$LIB_NAME -lstdc++
-EOF
+
+./create-pkgconfig.sh "$LIB_NAME" "$SO_INSTALL_DIR" "$SO_VERSION" "$LIB_DESC"  > $DEB_NAME/$PC_INSTALL_DIR/$PC_INSTALL_NAME
 
 dpkg-deb --build $DEB_NAME
