@@ -59,6 +59,6 @@ Homepage: https://www.tensorflow.org
 EOF
 
 
-./create-pkgconfig.sh "$LIB_NAME" "$SO_INSTALL_DIR" "$SO_VERSION" "$LIB_DESC"  > $DEB_NAME/$PC_INSTALL_DIR/$PC_INSTALL_NAME
+../create-pkgconfig.sh "$LIB_NAME" "$SO_INSTALL_DIR" "$SO_VERSION" "$LIB_DESC"  > $DEB_NAME/$PC_INSTALL_DIR/$PC_INSTALL_NAME
 
 dpkg-deb --build $DEB_NAME
