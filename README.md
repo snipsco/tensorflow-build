@@ -1,15 +1,17 @@
 # tensorflow-build
 
-A set of tools to build the tensorflow c lib for various architectures / OS
+A set of scripts to build the Tensorflow C lib for various architectures / OS
 
-The goal is to provide packages containing the `libtensorflow_c.so` file as well as a corresponding `pc` file so that is .so can be used with `pkg-config` (one use of this is using tensorflow with rust, see the bonus at the end)
+**The goal is to provide packages containing the `libtensorflow_c.so` file as well as a corresponding `pc` file so that is .so can be used with `pkg-config`** (one use of this is using tensorflow with rust, see the bonus at the end)
+
+We're using these scripts on Ubuntu and Archlinux, the commands given below assume that you're on a fairly recent Ubuntu box.
+
+Theses script are a WIP but a good starting point on how to cross compile tensorflow. Expect to have to edit and tweak them to fit your needs 
 
 ## Installing the dependencies
 
 ### Installing bazel
 Before runing these scripts, you need to have `bazel` version `0.4.3` in your path **version 0.4.4 will not work** 
-
-Here are some commands to install it on a recent ubuntu machine :
 
 ```
 $ echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
@@ -33,7 +35,7 @@ Script | Description
 --- | ---
 `compile-arm.sh` | clones the `raspberry/tools` repository an launches a cross compilation using the toolchain in it. Takes the tensorflow version as a parameter
 `compile.sh` | clones and build build tensorflow for current machine. Takes the tensorflow version as a parameter
-`create-deb-armhf.sh` | builds tensorflow for `armhf` and pakages it in a `deb` file. You need to be on a debian based system, deb is output in `target` dir
+`create-deb-armhf.sh` | builds tensorflow for `armhf` (raspbian) and pakages it in a `deb` file. You need to be on a debian based system, deb is output in `target` dir
 `create-deb-native.sh` | builds tensorflow for `amd64` and pakages it in a `deb` file. You need to be on a debian based system, deb is output in `target` dir
 `create-deb.sh` | Generic script for creating a deb. Launch it without args for usage
 `create-pkgconfig.sh` | Generic script for creating a pc. Launch it without args for usage
@@ -41,11 +43,11 @@ Script | Description
 
 ### Building a deb
 
-Just launch `create-deb-armhf.sh` or `create-deb-native.sh` and go for a cup of coffee, the `.deb` will be created in the `target` repository 
+Just launch `create-deb-armhf.sh` or `create-deb-native.sh` and go for a cup of coffee, the `.deb` will be created in the `target` repository.
 
 ### Building for archlinux
 
-A `PKGBUILD` is provided in the `archlinux` folder running `makepkg` in in this folder should be all that you need
+A `PKGBUILD` is provided in the `archlinux` folder running `makepkg` in in this folder should be all that you need.
 
 
 ## Bonus : Using with Rust
