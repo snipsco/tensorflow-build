@@ -14,7 +14,7 @@ OS | Available archs
 ---|---
 Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow-c-armhf-1.0.0-snips-3.deb) (raspbian, crosscompiled) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow-c-amd64-1.0.0-snips-3.deb)
 Archlinux | `i686` / `x86_64` [[PKGBUILD]](archlinux/PKGBUILD)
-OS X | `x86_64` [[homebrew formula]](Formula/tensorflow_c.rb)
+macOS | `x86_64` [[homebrew formula]](Formula/tensorflow_c.rb)
 
 
 ## Installing the dependencies
@@ -63,7 +63,7 @@ $ makepkg # then go grab a cup of coffee
 $ sudo pacman -S libtensorflow-c-1.0.0-1-x86_64.pkg.tar.xz
 
 ```
-### Building for OS X
+### Building for macOS
 You can use this repo as a brew tap
 
 ```
