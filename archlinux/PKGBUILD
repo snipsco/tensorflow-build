@@ -69,7 +69,13 @@ build() {
   bazel build -c opt ${_build_opts} --copt=${CC_OPT_FLAGS} tensorflow:libtensorflow_c.so
   # copy the built library out of the bazel directory
   cp -f bazel-bin/tensorflow/libtensorflow_c.so .
-  ../create-pkgconfig.sh tensorflow_c /usr/lib/ "$pkgver" "$pkgdesc" > tensorflow_c.pc
+  cat << EOF > tensorflow_c.pc
+Name: tensorflow_c
+Description: $pkgdesc
+Version: $pkgver
+Libs: -L/usr/lib -ltensorflow_c -lstdc++
+EOF
+
 }
 
 package() {

@@ -1,1 +1,0 @@
-../create-pkgconfig.sh
