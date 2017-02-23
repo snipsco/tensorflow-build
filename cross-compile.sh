@@ -42,4 +42,4 @@ grep -Rl 'lib64' | xargs sed -i 's/lib64/lib/g'
 
 yes ''|./configure || exit 1
 
-bazel build  -c opt --copt="-mfpu=neon-vfpv4" --copt="-funsafe-math-optimizations" --copt="-ftree-vectorize" --copt="-fomit-frame-pointer"   tensorflow:libtensorflow_c.so --cpu=armeabi-v7a --crosstool_top=//tools/arm_compiler:toolchain --verbose_failures
+bazel build $BAZEL_FLAGS -c opt --copt="-mfpu=neon-vfpv4" --copt="-funsafe-math-optimizations" --copt="-ftree-vectorize" --copt="-fomit-frame-pointer"   tensorflow:libtensorflow_c.so --cpu=armeabi-v7a --crosstool_top=//tools/arm_compiler:toolchain --verbose_failures

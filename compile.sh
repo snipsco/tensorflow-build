@@ -22,4 +22,5 @@ git checkout $TENSORFLOW_VERSION || exit 1
 
 yes ''|./configure || exit 1
 
-bazel build  tensorflow:libtensorflow_c.so --verbose_failures
+bazel build $BAZEL_FLAGS tensorflow:libtensorflow_c.so --verbose_failures
+
