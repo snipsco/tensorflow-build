@@ -26,11 +26,11 @@ node {
 					}
         
 					stage("build-${label}") {
-						sh "${cmd}"
+						sh "cd debian && ${cmd}"
 					}	
         
 					stage("upload-${label}") {
-						sh 'aws s3 cp target/ s3://snips/tensorflow-deb/ --recursive  --exclude "*" --include "*.deb"'
+						sh 'aws s3 cp debian/target/ s3://snips/tensorflow-deb/ --recursive  --exclude "*" --include "*.deb"'
 					}
         
 				}
