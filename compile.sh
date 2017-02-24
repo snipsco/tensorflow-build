@@ -22,5 +22,7 @@ git checkout $TENSORFLOW_VERSION || exit 1
 
 yes ''|./configure || exit 1
 
+echo "launching bazel with flags '$BAZEL_FLAGS'"
+
 bazel build $BAZEL_FLAGS tensorflow:libtensorflow_c.so --verbose_failures
 
