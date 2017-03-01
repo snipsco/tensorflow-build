@@ -1,7 +1,7 @@
 # Maintainer: Thibaut Lorrain <thibaut.lorrain@snips.ai>
 # Using as a base the AUR package from : Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
-pkgname=libtensorflow-c
+pkgname=libtensorflow
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Tensorflow C library"
@@ -66,22 +66,22 @@ prepare() {
 build() {
   cd ${srcdir}/tensorflow
   ./configure
-  bazel build -c opt ${_build_opts} --copt=${CC_OPT_FLAGS} tensorflow:libtensorflow_c.so
+  bazel build -c opt ${_build_opts} --copt=${CC_OPT_FLAGS} tensorflow:libtensorflow.so
   # copy the built library out of the bazel directory
-  cp -f bazel-bin/tensorflow/libtensorflow_c.so .
-  cat << EOF > tensorflow_c.pc
-Name: tensorflow_c
+  cp -f bazel-bin/tensorflow/libtensorflow.so .
+  cat << EOF > tensorflow.pc
+Name: tensorflow
 Description: $pkgdesc
 Version: $pkgver
-Libs: -L/usr/lib -ltensorflow_c -lstdc++
+Libs: -L/usr/lib -ltensorflow -lstdc++
 EOF
 
 }
 
 package() {
   cd ${srcdir}/tensorflow
-  install -Dm644 libtensorflow_c.so ${pkgdir}/usr/lib/libtensorflow_c.so
-  install -Dm644 tensorflow_c.pc ${pkgdir}/usr/lib/pkgconfig/tensorflow_c.pc
+  install -Dm644 libtensorflow.so ${pkgdir}/usr/lib/libtensorflow.so
+  install -Dm644 tensorflow.pc ${pkgdir}/usr/lib/pkgconfig/tensorflow.pc
   install -Dm644 tensorflow/c/c_api.h ${pkgdir}/usr/include/${pkgname}/c_api.h
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

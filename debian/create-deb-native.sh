@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 
-TARGET_SO_FILE=target/tensorflow/bazel-bin/tensorflow/libtensorflow_c.so
+TARGET_SO_FILE=target/tensorflow/bazel-bin/tensorflow/libtensorflow.so
 
 . ./versions.sh
 

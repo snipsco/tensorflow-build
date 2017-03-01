@@ -6,8 +6,8 @@ SO_VERSION=$3
 
 BUILD_DIR=target
 
-PACKAGE_NAME="libtensorflow-c"
-LIB_NAME="tensorflow_c"
+PACKAGE_NAME="libtensorflow"
+LIB_NAME="tensorflow"
 LIB_DESC="Tensorflow C library"
 
 DEBIAN_DIR=DEBIAN
@@ -33,7 +33,7 @@ then
 fi
 if [ -z $SO_FILE ] || [ ! -f $SO_FILE ] || [ -z $SO_ARCH ] || [ -z $SO_VERSION ]
 then
-	echo "usage: $0 <path/to/libtensorflow_c.so> <arch> <version>"
+	echo "usage: $0 <path/to/libtensorflow.so> <arch> <version>"
 	exit 1
 fi
 
