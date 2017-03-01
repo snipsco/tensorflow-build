@@ -24,5 +24,5 @@ yes ''|./configure || exit 1
 
 echo "launching bazel with flags '$BAZEL_FLAGS'"
 
-bazel build $BAZEL_FLAGS tensorflow:libtensorflow_c.so --verbose_failures
+bazel build $BAZEL_FLAGS tensorflow:libtensorflow.so --verbose_failures
 
