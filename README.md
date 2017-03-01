@@ -54,7 +54,7 @@ Script | Description
 ```
 $ cd debian
 $ ./create-deb-native.sh # or ./create-deb-armhf.sh then go grab a cup of coffee
-$ sudo dpkg -i target/libtensorflow-c_1.0.0-snips-3_amd64.deb
+$ sudo dpkg -i target/libtensorflow_1.0.0-snips-5_amd64.deb
 
 ```
 ### Building for Archlinux
@@ -62,7 +62,7 @@ $ sudo dpkg -i target/libtensorflow-c_1.0.0-snips-3_amd64.deb
 ```
 $ cd archlinux
 $ makepkg # then go grab a cup of coffee
-$ sudo pacman -S libtensorflow-c-1.0.0-1-x86_64.pkg.tar.xz
+$ sudo pacman -S libtensorflow-1.0.0-1-x86_64.pkg.tar.xz
 
 ```
 ### Building for macOS
@@ -70,7 +70,7 @@ You can use this repo as a brew tap
 
 ```
 $ brew tap snipsco/tensorflow https://github.com/snipsco/tensorflow-build 
-$ brew install snipsco/tensorflow/tensorflow_c
+$ brew install snipsco/tensorflow/tensorflow
 ```
 
 ## Bonus : Using with Rust
@@ -112,7 +112,7 @@ We now need the `.so` file of tensorflow for the target arch, let's build the 1.
 $ ./compile-arm.sh v1.0.0
 ```
 
-The `.so` is located in `target/tensorflow/bazel-bin/tensorflow/libtensorflow_c.so` you may want to move it somewhere else
+The `.so` is located in `target/tensorflow/bazel-bin/tensorflow/libtensorflow.so` you may want to move it somewhere else
 
 Let's then generate the `.pc` file
 
