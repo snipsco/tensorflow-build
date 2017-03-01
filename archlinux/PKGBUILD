@@ -10,12 +10,11 @@ license=('Apache2')
 arch=('i686' 'x86_64')
 provides=('tensorflow' 'libtensorflow')
 conflicts=('tensorflow' 'libtensorflow')
-makedepends=('git' 'bazel=0.4.3' 'python-numpy')
+makedepends=('git' 'bazel' 'python-numpy')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-source=("git+https://github.com/tensorflow/tensorflow#tag=v$pkgver"
-        "create-pkgconfig.sh")
-md5sums=('SKIP' 'SKIP')
+source=("git+https://github.com/tensorflow/tensorflow#tag=v$pkgver")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/tensorflow"
