@@ -18,7 +18,7 @@ mkdir $TARGET
 
 CURRENT_DIR=$(pwd)
 
-git clone https://github.com/raspberrypi/tools "$TARGET/$TOOLS_DIR"
+git clone https://github.com/raspberrypi/tools "$TARGET/$TOOLS_DIR" --depth 1
 
 ./cross-compile.sh $CURRENT_DIR/$TARGET/$TOOLS_DIR/$TOOLCHAIN_ROOT $TOOLCHAIN_NAME $VERSION
 

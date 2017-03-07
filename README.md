@@ -14,7 +14,7 @@ Supported OS / Arch:
 
 OS | Available archs
 ---|---
-Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.0.0-snips-5_armhf.deb) (raspbian, crosscompiled) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.0.0-snips-5_amd64.deb)
+Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.0.0-snips-6_armhf.deb) (raspbian, crosscompiled, tested on Raspberry Pi 0, 2 & 3) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.0.0-snips-6_amd64.deb)
 Archlinux | `i686` / `x86_64` [[PKGBUILD]](archlinux/PKGBUILD)
 macOS | `x86_64` [[homebrew formula]](Formula/tensorflow_c.rb)
 
