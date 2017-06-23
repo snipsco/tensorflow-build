@@ -89,10 +89,10 @@ diff --git a/WORKSPACE b/WORKSPACE
 index e0931512f..5b7152a67 100644
 --- a/WORKSPACE
 +++ b/WORKSPACE
-@@ -7,6 +7,12 @@ load("//tensorflow:workspace.bzl", "check_version", "tf_workspace")
- # require here.
- check_version("0.4.2")
- 
+@@ -7,6 +7,12 @@ closure_repositories()
+
+ load("//tensorflow:workspace.bzl", "tf_workspace")
+
 +new_local_repository(
 +    name = "arm_compiler",
 +    path = "%%CT_ROOT_DIR%%",

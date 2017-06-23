@@ -2,7 +2,7 @@
 # Using as a base the AUR package from : Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=libtensorflow
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Tensorflow C library"
 url="https://www.tensorflow.org/"
