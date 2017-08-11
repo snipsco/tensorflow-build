@@ -2,8 +2,6 @@
 
 A set of scripts to (cross-)build the Tensorflow C lib for various architectures / OS
 
-![logos](logos.png)
-
 **The goal is to provide packages containing the `libtensorflow_c.so` file as well as a corresponding `pc` file so that is `.so` can be used with `pkg-config`** (one use of this is linking tensorflow with rust programs, see the bonus at the end)
 
 We're using these scripts on Ubuntu and Archlinux, the commands given below assume that you're on a fairly recent Ubuntu box.
