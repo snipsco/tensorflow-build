@@ -2,7 +2,7 @@
 
 A set of scripts to (cross-)build the Tensorflow C lib for various architectures / OS
 
-**The goal is to provide packages containing the `libtensorflow_c.so` file as well as a corresponding `pc` file so that is `.so` can be used with `pkg-config`** (one use of this is linking tensorflow with rust programs, see the bonus at the end)
+**The goal of this repo is to provide packages containing the `libtensorflow_c.so` file as well as a corresponding `pc` file so that is `.so` can be used with `pkg-config`** (one use of this is linking tensorflow with rust programs, see the bonus at the end)
 
 We're using these scripts on Ubuntu and Archlinux, the commands given below assume that you're on a fairly recent Ubuntu box.
 
@@ -12,7 +12,8 @@ Supported OS / Arch:
 
 OS | Available archs
 ---|---
-Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.0-snips-1_armhf.deb) (raspbian, crosscompiled, tested on Raspberry Pi 0, 2 & 3) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.0-snips-1_amd64.deb)
+Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.1-snips-1_armhf.deb) (raspbian, crosscompiled, tested on Raspberry Pi 0, 2 & 3) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.1-snips-1_amd64.deb)
+Android | `arm` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-armeabi-v7a-v1.2.1.tar.gz)
 Archlinux | `i686` / `x86_64` use this aur [[PKGBUILD]](https://aur.archlinux.org/packages/tensorflow-git/)
 macOS | `x86_64` `brew install libtensorflow`
 
@@ -46,8 +47,8 @@ Script | Description
 `compile.sh` | Clones and build build tensorflow for current machine. Takes the tensorflow version as a parameter
 `cross-compile.sh` | Generic script for cloning and building tensorflow using a cross toolchain. Launch it without args for usage
 `compile-arm.sh` | Clones the `raspberry/tools` repository an launches a cross compilation using the toolchain in it. Takes the tensorflow version as a parameter
+`compile-android.sh` | Download Android NDK and launch a crosscompilation for android using it. Takes the tensorflow version and android arch as parameters
 `create-pkgconfig.sh` | Generic script for creating a pc. Launch it without args for usage
-
 
 ### Building a deb
 ```
@@ -107,7 +108,7 @@ $ ./create-pkgconfig.sh tensorflow_c /folder/where/the/so/is 1.0.0 "Tensorflow C
 Now that all is done, we can use cargo to crossbuild the app
 
 ```
-$ PKG_CONFIG_PATH=/folder/where/the/pcfile/is PKG_CONFIG_ALLOW_CROSS=1 cargo build
+$ PKG_CONFIG_LIBDIR=/folder/where/the/pcfile/is PKG_CONFIG_ALLOW_CROSS=1 cargo build
 ```
 
 Enjoy!
