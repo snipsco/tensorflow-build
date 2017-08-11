@@ -15,8 +15,8 @@ Supported OS / Arch:
 OS | Available archs
 ---|---
 Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.0-snips-1_armhf.deb) (raspbian, crosscompiled, tested on Raspberry Pi 0, 2 & 3) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.0-snips-1_amd64.deb)
-Archlinux | `i686` / `x86_64` [[PKGBUILD]](archlinux/PKGBUILD)
-macOS | `x86_64` [[homebrew formula]](Formula/tensorflow_c.rb)
+Archlinux | `i686` / `x86_64` use this aur [[PKGBUILD]](https://aur.archlinux.org/packages/tensorflow-git/)
+macOS | `x86_64` `brew install libtensorflow`
 
 
 ## Installing the dependencies
@@ -57,21 +57,6 @@ $ cd debian
 $ ./create-deb-native.sh # or ./create-deb-armhf.sh then go grab a cup of coffee
 $ sudo dpkg -i target/libtensorflow_1.0.0-snips-5_amd64.deb
 
-```
-### Building for Archlinux
-
-```
-$ cd archlinux
-$ makepkg # then go grab a cup of coffee
-$ sudo pacman -S libtensorflow-1.0.0-1-x86_64.pkg.tar.xz
-
-```
-### Building for macOS
-You can use this repo as a brew tap
-
-```
-$ brew tap snipsco/tensorflow https://github.com/snipsco/tensorflow-build 
-$ brew install snipsco/tensorflow/tensorflow
 ```
 
 ## Bonus : Using with Rust
