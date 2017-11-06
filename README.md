@@ -47,7 +47,7 @@ Script | Description
 `compile.sh` | Clones and build build tensorflow for current machine. Takes the tensorflow version as a parameter
 `cross-compile.sh` | Generic script for cloning and building tensorflow using a cross toolchain. Launch it without args for usage
 `compile-arm.sh` | Clones the `raspberry/tools` repository an launches a cross compilation using the toolchain in it. Takes the tensorflow version as a parameter
-`compile-android.sh` | Download Android NDK and launch a crosscompilation for android using it. Takes the tensorflow version and android arch as parameters
+`compile-android.sh` | Download Android NDK and launch a crosscompilation for android using it. Takes the tensorflow version, android arch and package version as parameters
 `create-pkgconfig.sh` | Generic script for creating a pc. Launch it without args for usage
 
 ### Building a deb
