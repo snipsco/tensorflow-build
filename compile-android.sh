@@ -2,10 +2,11 @@
 
 set -e
 
-USAGE="Usage : $0 <tensorflow version> <android arch>"
+USAGE="Usage : $0 <tensorflow version> <android arch> <package version>"
 
 TENSORFLOW_VERSION=${1?$USAGE}
 ANDROID_ARCH=${2?$USAGE}
+PACKAGE_VERSION=${3?$USAGE}
 
 BUILD_DIR=`pwd`/target
 
@@ -20,7 +21,7 @@ NDK_ARCHIVE=$NDK_NAME-linux-x86_64.zip
 NDK_DIR=$BUILD_DIR/$NDK_NAME
 
 # We create a dir with a tree containing the .so and a .pc file that can be overlayed over a sysroot
-PKG_NAME=tensorflow-android-$ANDROID_ARCH-$TENSORFLOW_VERSION
+PKG_NAME=tensorflow-android-$ANDROID_ARCH-$PACKAGE_VERSION
 PKG_DIR=$BUILD_DIR/$PKG_NAME
 FINAL_PKG=$PKG_DIR.tar.gz
 
@@ -105,11 +106,13 @@ mkdir -p $SO_INSTALL_DIR
 mkdir -p $PKG_CONFIG_INSTALL_DIR
 mkdir -p $HEADER_INSTALL_DIR
 
-cp $TF_SO $SO_INSTALL_DIR
+install -Dm755 $TF_SO $SO_INSTALL_DIR
 
-cp $TF_HEADER $HEADER_INSTALL_DIR
+install -Dm644  $TF_HEADER $HEADER_INSTALL_DIR
 
 $CREATE_PKGCONFIG "$LIB_NAME" "/$SO_INSTALL_DIR" "${TENSORFLOW_VERSION/v}" "Tensorflow C library" > $PKG_CONFIG_INSTALL_DIR/$LIB_NAME.pc
+
+chmod 644 $PKG_CONFIG_INSTALL_DIR/$LIB_NAME.pc
 
 cd $BUILD_DIR
 

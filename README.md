@@ -12,8 +12,8 @@ Supported OS / Arch:
 
 OS | Available archs
 ---|---
-Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.1-snips-1_armhf.deb) (raspbian, crosscompiled, tested on Raspberry Pi 0, 2 & 3) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.1-snips-1_amd64.deb)
-Android | `arm` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-armeabi-v7a-v1.2.1.tar.gz)
+Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.3.1-snips-2_armhf.deb) (raspbian, crosscompiled, tested on Raspberry Pi 0, 2 & 3) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.3.1-snips-2_amd64.deb)
+Android | `armeabi-v7a` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-armeabi-v7a-1.3.1-snips-2.tar.gz) <br> `arm64-v8a` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-arm64-v8a-1.3.1-snips-2.tar.gz) <br> `x86` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-x86-1.3.1-snips-2.tar.gz) <br> `x86_64` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-x86_64-1.3.1-snips-2.tar.gz)
 Archlinux | `i686` / `x86_64` use this aur [[PKGBUILD]](https://aur.archlinux.org/packages/tensorflow-git/)
 macOS | `x86_64` `brew install libtensorflow`
 
@@ -47,7 +47,7 @@ Script | Description
 `compile.sh` | Clones and build build tensorflow for current machine. Takes the tensorflow version as a parameter
 `cross-compile.sh` | Generic script for cloning and building tensorflow using a cross toolchain. Launch it without args for usage
 `compile-arm.sh` | Clones the `raspberry/tools` repository an launches a cross compilation using the toolchain in it. Takes the tensorflow version as a parameter
-`compile-android.sh` | Download Android NDK and launch a crosscompilation for android using it. Takes the tensorflow version and android arch as parameters
+`compile-android.sh` | Download Android NDK and launch a crosscompilation for android using it. Takes the tensorflow version, android arch and package version as parameters
 `create-pkgconfig.sh` | Generic script for creating a pc. Launch it without args for usage
 
 ### Building a deb
