@@ -6,7 +6,7 @@ USAGE="Usage : $0 <tensorflow version> <android arch> <package version>"
 
 TENSORFLOW_VERSION=${1?$USAGE}
 ANDROID_ARCH=${2?$USAGE}
-PACKAGE_VERSIOn=${3?$USAGE}
+PACKAGE_VERSION=${3?$USAGE}
 
 BUILD_DIR=`pwd`/target
 
