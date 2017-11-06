@@ -12,8 +12,8 @@ Supported OS / Arch:
 
 OS | Available archs
 ---|---
-Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.1-snips-1_armhf.deb) (raspbian, crosscompiled, tested on Raspberry Pi 0, 2 & 3) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.2.1-snips-1_amd64.deb)
-Android | `arm` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-armeabi-v7a-v1.2.1.tar.gz)
+Debian Like | `armhf` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.3.1-snips-2_armhf.deb) (raspbian, crosscompiled, tested on Raspberry Pi 0, 2 & 3) <br> `amd64` [[deb]](https://s3.amazonaws.com/snips/tensorflow-deb/libtensorflow_1.3.1-snips-2_amd64.deb)
+Android | `armeabi-v7a` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-armeabi-v7a-v1.3.1-snips-2.tar.gz) <br> `arm64-v8a` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-arm64-v8a-v1.3.1-snips-2.tar.gz) <br> `x86` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-x86-v1.3.1-snips-2.tar.gz) <br> `x86_64` [[sysroot overlay]](https://s3.amazonaws.com/snips/tensorflow-android/tensorflow-android-x86_64-v1.3.1-snips-2.tar.gz)
 Archlinux | `i686` / `x86_64` use this aur [[PKGBUILD]](https://aur.archlinux.org/packages/tensorflow-git/)
 macOS | `x86_64` `brew install libtensorflow`
 
