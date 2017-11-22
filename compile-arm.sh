@@ -8,7 +8,7 @@ TOOLCHAIN_NAME=arm-linux-gnueabihf
 
 VERSION=$1
 
-if [ -z $VERSION ] 
+if [ -z $VERSION ]
 then
 	echo "please provide the version tag to build"
 	exit 1

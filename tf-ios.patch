@@ -1,0 +1,114 @@
+diff --git a/tensorflow/c/c_api.cc b/tensorflow/c/c_api.cc
+index 3e69134c50..4d3f8d93d1 100644
+--- a/tensorflow/c/c_api.cc
++++ b/tensorflow/c/c_api.cc
+@@ -20,7 +20,7 @@ limitations under the License.
+ #include <memory>
+ #include <vector>
+ 
+-#ifndef __ANDROID__
++#if !defined(__ANDROID__) && !defined(__APPLE__)
+ #include "tensorflow/cc/framework/gradients.h"
+ #include "tensorflow/cc/framework/ops.h"
+ #include "tensorflow/cc/framework/scope_internal.h"
+@@ -2073,7 +2073,7 @@ void TF_FinishWhile(const TF_WhileParams* params, TF_Status* status,
+ 
+ void TF_AbortWhile(const TF_WhileParams* params) { FreeWhileResources(params); }
+ 
+-#ifndef __ANDROID__
++#if !defined(__ANDROID__) && !defined(__APPLE__)
+ namespace {
+ 
+ void OutputsFromTFOutputs(TF_Output* tf_outputs, int n, TF_Status* status,
+@@ -2094,11 +2094,11 @@ void TFOutputsFromOutputs(const std::vector<tensorflow::Output>& outputs,
+ }
+ 
+ }  // namespace
+-#endif  // __ANDROID__
++#endif  // __ANDROID__ && __APPLE__
+ 
+ void TF_AddGradients(TF_Graph* g, TF_Output* y, int ny, TF_Output* x, int nx,
+                      TF_Output* dx, TF_Status* status, TF_Output* dy) {
+-#ifdef __ANDROID__
++#if defined(__ANDROID__) || defined(__APPLE__)
+   status->status = tensorflow::errors::Unimplemented(
+       "Adding gradients is not supported in Android. File a bug at "
+       "https://github.com/tensorflow/tensorflow/issues if this feature is "
+@@ -2140,7 +2140,7 @@ void TF_AddGradients(TF_Graph* g, TF_Output* y, int ny, TF_Output* x, int nx,
+ 
+   // Unpack the results from grad_outputs_arg.
+   TFOutputsFromOutputs(dy_arg, dy);
+-#endif  // __ANDROID__
++#endif  // __ANDROID__ || __APPLE__
+ }
+ 
+ // TF_Session functions ----------------------------------------------
+@@ -2167,7 +2167,7 @@ TF_Session* TF_LoadSessionFromSavedModel(
+     TF_Graph* graph, TF_Buffer* meta_graph_def, TF_Status* status) {
+ // TODO(ashankar): Remove the __ANDROID__ guard. This will require ensuring that
+ // the tensorflow/cc/saved_model:loader build target is Android friendly.
+-#ifdef __ANDROID__
++#if defined(__ANDROID__) || defined(__APPLE__)
+   status->status = tensorflow::errors::Unimplemented(
+       "Loading a SavedModel is not supported in Android. File a bug at "
+       "https://github.com/tensorflow/tensorflow/issues if this feature is "
+@@ -2221,7 +2221,7 @@ TF_Session* TF_LoadSessionFromSavedModel(
+   graph->num_sessions += 1;
+   session->last_num_graph_nodes = graph->graph.num_node_ids();
+   return session;
+-#endif  // __ANDROID__
++#endif  // __ANDROID__ || __APPLE__
+ }
+ 
+ void TF_CloseSession(TF_Session* s, TF_Status* status) {
+diff --git a/tensorflow/contrib/makefile/Makefile b/tensorflow/contrib/makefile/Makefile
+index 2150cfe9ea..afe73b12fd 100644
+--- a/tensorflow/contrib/makefile/Makefile
++++ b/tensorflow/contrib/makefile/Makefile
+@@ -510,6 +510,10 @@ tensorflow/core/util/reporter.cc \
+ tensorflow/tools/benchmark/benchmark_model.cc \
+ tensorflow/tools/benchmark/benchmark_model_main.cc
+ 
++TF_CC_SRCS += \
++tensorflow/cc/saved_model/loader.cc \
++tensorflow/c/c_api.cc
++
+ ifdef HEXAGON_LIBS
+ 	TF_CC_SRCS += \
+ tensorflow/cc/framework/scope.cc \
+diff --git a/tensorflow/contrib/makefile/proto_text_pb_cc_files.txt b/tensorflow/contrib/makefile/proto_text_pb_cc_files.txt
+index 5ade8942af..a045f82b37 100644
+--- a/tensorflow/contrib/makefile/proto_text_pb_cc_files.txt
++++ b/tensorflow/contrib/makefile/proto_text_pb_cc_files.txt
+@@ -3,6 +3,7 @@ tensorflow/core/util/saved_tensor_slice.pb.cc
+ tensorflow/core/util/memmapped_file_system.pb.cc
+ tensorflow/core/util/event.pb.cc
+ tensorflow/core/protobuf/tensorflow_server.pb.cc
++tensorflow/core/protobuf/saved_model.pb.cc
+ tensorflow/core/protobuf/saver.pb.cc
+ tensorflow/core/protobuf/queue_runner.pb.cc
+ tensorflow/core/protobuf/named_tensor.pb.cc
+diff --git a/tensorflow/contrib/makefile/proto_text_pb_h_files.txt b/tensorflow/contrib/makefile/proto_text_pb_h_files.txt
+index 1f0ad06cdc..2bd062cc15 100644
+--- a/tensorflow/contrib/makefile/proto_text_pb_h_files.txt
++++ b/tensorflow/contrib/makefile/proto_text_pb_h_files.txt
+@@ -3,6 +3,7 @@ tensorflow/core/util/saved_tensor_slice.pb.h
+ tensorflow/core/util/memmapped_file_system.pb.h
+ tensorflow/core/util/event.pb.h
+ tensorflow/core/protobuf/tensorflow_server.pb.h
++tensorflow/core/protobuf/saved_model.pb.h
+ tensorflow/core/protobuf/saver.pb.h
+ tensorflow/core/protobuf/queue_runner.pb.h
+ tensorflow/core/protobuf/named_tensor.pb.h
+diff --git a/tensorflow/contrib/makefile/tf_proto_files.txt b/tensorflow/contrib/makefile/tf_proto_files.txt
+index a1a9aa7190..1acd5f32b6 100644
+--- a/tensorflow/contrib/makefile/tf_proto_files.txt
++++ b/tensorflow/contrib/makefile/tf_proto_files.txt
+@@ -7,6 +7,7 @@ tensorflow/core/util/saved_tensor_slice.proto
+ tensorflow/core/util/memmapped_file_system.proto
+ tensorflow/core/util/event.proto
+ tensorflow/core/protobuf/tensorflow_server.proto
++tensorflow/core/protobuf/saved_model.proto
+ tensorflow/core/protobuf/saver.proto
+ tensorflow/core/protobuf/queue_runner.proto
+ tensorflow/core/protobuf/named_tensor.proto
