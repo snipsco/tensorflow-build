@@ -103,18 +103,38 @@ index e0931512f..5b7152a67 100644
  #android_sdk_repository(
  #    name = "androidsdk",
 diff --git a/tensorflow/core/platform/platform.h b/tensorflow/core/platform/platform.h
-index 55d7954f3..ccebaf343 100644
+index 12120c4ab9..11ef072c38 100644
 --- a/tensorflow/core/platform/platform.h
 +++ b/tensorflow/core/platform/platform.h
-@@ -45,7 +45,7 @@ limitations under the License.
+@@ -45,7 +45,8 @@ limitations under the License.
  
- // Since there's no macro for the Raspberry Pi, assume we're on a mobile
- // platform if we're compiling for the ARM CPU.
+ // Require an outside macro to tell us if we're building for Raspberry Pi.
+ #if !defined(RASPBERRY_PI)
 -#define IS_MOBILE_PLATFORM
-+//#define IS_MOBILE_PLATFORM
++#define RASPBERRY_PI
++#define PLATFORM_POSIX
+ #endif  // !defined(RASPBERRY_PI)
  
  #else
- // If no platform specified, use:
+diff --git a/configure.py b/configure.py
+index 27519b4aba..4114afbbb8 100644
+--- a/configure.py
++++ b/configure.py
+@@ -1368,11 +1368,11 @@ def main():
+   set_build_var(environ_cp, 'TF_NEED_JEMALLOC', 'jemalloc as malloc',
+                 'with_jemalloc', True)
+   set_build_var(environ_cp, 'TF_NEED_GCP', 'Google Cloud Platform',
+-                'with_gcp_support', True, 'gcp')
++                'with_gcp_support', False, 'gcp')
+   set_build_var(environ_cp, 'TF_NEED_HDFS', 'Hadoop File System',
+-                'with_hdfs_support', True, 'hdfs')
++                'with_hdfs_support', False, 'hdfs')
+   set_build_var(environ_cp, 'TF_NEED_S3', 'Amazon S3 File System',
+-                'with_s3_support', True, 's3')
++                'with_s3_support', False, 's3')
+   set_build_var(environ_cp, 'TF_NEED_KAFKA', 'Apache Kafka Platform',
+                 'with_kafka_support', False, 'kafka')
+   set_build_var(environ_cp, 'TF_ENABLE_XLA', 'XLA JIT', 'with_xla_support',
 diff --git a/tools/arm_compiler/BUILD b/tools/arm_compiler/BUILD
 new file mode 100644
 index 000000000..ccddd6d50
