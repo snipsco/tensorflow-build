@@ -1,0 +1,12 @@
+diff --git a/tensorflow/core/kernels/BUILD b/tensorflow/core/kernels/BUILD
+index 0c862c739e..8643efdfe3 100644
+--- a/tensorflow/core/kernels/BUILD
++++ b/tensorflow/core/kernels/BUILD
+@@ -4230,6 +4230,7 @@ filegroup(
+         "cwise_op_exp.cc",
+         "cwise_op_floor.cc",
+         "cwise_op_floor_div.cc",
++        "cwise_op_floor_mod.cc",
+         "cwise_op_greater.cc",
+         "cwise_op_greater_equal.cc",
+         "cwise_op_invert.cc",

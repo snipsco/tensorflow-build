@@ -37,6 +37,7 @@ git clone https://github.com/tensorflow/tensorflow
 cd tensorflow
 
 git checkout $TENSORFLOW_VERSION
+git apply ../../tf-android.patch
 
 cat << EOF >> WORKSPACE
 android_ndk_repository(
