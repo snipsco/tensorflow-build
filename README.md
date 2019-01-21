@@ -1,5 +1,5 @@
 ## :bangbang: :bangbang: Not maintained :bangbang: :bangbang: 
-We do not use tensorflow-build anymore at snips, we make our models run on small devices using [tensorflow-deploy-rust](https://github.com/kali/tensorflow-deploy-rust). The scripts here work to compile tf 1.3.1 and have not be tested on later versions
+We do not use tensorflow-build anymore at snips, we make our models run on small devices using [tract](https://github.com/kali/tract). The scripts here work to compile tf 1.3.1 and have not be tested on later versions
 
 # tensorflow-build
 
